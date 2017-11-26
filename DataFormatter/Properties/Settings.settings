@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DataFormatter.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Path" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">F:\GoogleDrive\VS_PROJECTS\WORK\DataFormatter\</Value>
+    </Setting>
+    <Setting Name="DataFileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">PositionData.txt</Value>
+    </Setting>
+    <Setting Name="ExportFileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ExportToViz.txt</Value>
+    </Setting>
+    <Setting Name="NumberOfPositionSets" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="ImportFileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">RawData.txt</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

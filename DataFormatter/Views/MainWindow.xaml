@@ -1,0 +1,243 @@
+﻿<Window x:Class="DataFormatter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataFormatter.ViewModels"
+        mc:Ignorable="d"
+        Title="KV17 Viz Maps DataManager" Height="450" Width="745">
+
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <local:MainViewModel x:Key="mainViewModel"/>
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter"/>
+        <Style x:Key="PositionDisplay" TargetType="StackPanel">
+            <Setter Property="Background" Value="CadetBlue"/>
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Margin" Value="0 0 0 10"/>
+        </Style>
+        <Style x:Key="PositionText" TargetType="TextBox">
+            <Setter Property="MinWidth" Value="50"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="PositionTextBlock" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Width" Value="50"/>
+        </Style>
+    </Window.Resources>   
+
+
+    <Grid >  <!-- Main Grid -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="3*" MaxHeight="85"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <!--SubGrid for Active Place-->
+        <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Background="Gray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+
+            <!--ID & Index-->
+            <StackPanel Orientation="Vertical" Grid.Column="0" Grid.RowSpan="2"
+                        Margin="5 0 5 0">
+                <TextBlock>ID</TextBlock>
+                <TextBox x:Name="ID" Text="{Binding Path=ActivePlace.PlaceId, Mode=TwoWay}"/>
+                <TextBlock>Index</TextBlock>
+                <TextBox x:Name="Index" Text="{Binding Path=ActivePlace.PlaceIndex, Mode=OneWay}"/>
+            </StackPanel>
+
+            <!--NAME-->
+            <StackPanel Orientation="Vertical" Grid.Column="1" Grid.RowSpan="2"
+                        Margin="5 0 5 0">
+                <TextBlock>NAME</TextBlock>
+                <TextBox x:Name="Name" Text="{Binding Path=ActivePlace.PlaceName, Mode=TwoWay}"/>
+            </StackPanel>
+
+            <!-- Position-set selector -->
+            <StackPanel Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="2">
+                <ComboBox x:Name="cbxPositionSelector" 
+                          ItemsSource="{Binding Path=PositionListForDisplay, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                          SelectedIndex="{Binding TheSelectedIndex, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                          
+                          IsSynchronizedWithCurrentItem="True"/>               
+            </StackPanel>
+
+
+            <!--Subgrid for Active Place, positions-->
+            <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <!--Keyframe 1 START-->
+                <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1"                            
+                            Style="{StaticResource PositionDisplay}"
+                            Visibility="{Binding Path=ShowSet1, Converter={StaticResource BoolToVisConverter}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <TextBlock Style="{StaticResource PositionTextBlock}" Text="1 START"/>
+                    <TextBox x:Name="KF1startX" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[0].PositionStart.PosX, Mode=TwoWay}"/>
+                    <TextBox x:Name="KF1startY" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[0].PositionStart.PosY, Mode=TwoWay}" />
+                    <TextBox x:Name="KF1startZ" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[0].PositionStart.PosZ, Mode=TwoWay}"/>
+                </StackPanel>
+
+                <!--Keyframe 1 END-->
+                <StackPanel Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="1"                            
+                            Style="{StaticResource PositionDisplay}"
+                            Visibility="{Binding Path=ShowSet1, Converter={StaticResource BoolToVisConverter}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <TextBlock Style="{StaticResource PositionTextBlock}" Text="1 END"></TextBlock>
+                    <TextBox x:Name="KF1endX" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[0].PositionEnd.PosX, Mode=TwoWay}"/>
+                    <TextBox x:Name="KF1endY" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[0].PositionEnd.PosY, Mode=TwoWay}"/>
+                    <TextBox x:Name="KF1endZ" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[0].PositionEnd.PosZ, Mode=TwoWay}"/>
+                </StackPanel>
+
+                <!--Keyframe 2 -->
+                    <!--Keyframe 2 START-->
+                <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1"
+                            Style="{StaticResource PositionDisplay}"
+                            Visibility="{Binding Path=ShowSet2, Converter={StaticResource BoolToVisConverter}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <TextBlock Style="{StaticResource PositionTextBlock}" Text="2 START"/>
+                    <TextBox x:Name="KF2startX" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[1].PositionStart.PosX, Mode=TwoWay}"/>
+                    <TextBox x:Name="KF2startY" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[1].PositionStart.PosY, Mode=TwoWay}"/>
+                    <TextBox x:Name="KF2startZ" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[1].PositionStart.PosZ, Mode=TwoWay}"/>
+                    </StackPanel>
+
+                    <!--Keyframe 2 END-->
+                <StackPanel Grid.Column="1" Grid.Row="0"
+                            Grid.ColumnSpan="1"
+                            Style="{StaticResource PositionDisplay}"
+                           Visibility="{Binding Path=ShowSet2, Converter={StaticResource BoolToVisConverter}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <TextBlock Style="{StaticResource PositionTextBlock}" Text="2 END"/>
+                    <TextBox x:Name="KF2endX" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[1].PositionEnd.PosX, Mode=TwoWay}"/>
+                    <TextBox x:Name="KF2endY" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[1].PositionEnd.PosY, Mode=TwoWay}"/>
+                    <TextBox x:Name="KF2endZ" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[1].PositionEnd.PosZ, Mode=TwoWay}"/>
+                    </StackPanel>
+               
+                <!--Keyframe 3 -->              
+                    <!--Keyframe 3 START-->
+                <StackPanel Grid.Column="0" Grid.Row="0"
+                            Grid.ColumnSpan="1"
+                            Style="{StaticResource PositionDisplay}"
+                            Visibility="{Binding Path=ShowSet3, Converter={StaticResource BoolToVisConverter}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <TextBlock Style="{StaticResource PositionTextBlock}" Text="3 START"/>
+                    <TextBox x:Name="KF3startX" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[2].PositionStart.PosX, Mode=TwoWay}"/>
+                    <TextBox x:Name="KF3startY" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[2].PositionStart.PosY, Mode=TwoWay}"/>
+                    <TextBox x:Name="KF3startZ" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[2].PositionStart.PosZ, Mode=TwoWay}"/>
+
+                    </StackPanel>
+
+                    <!--Keyframe 3 END-->
+                <StackPanel Grid.Column="1" Grid.Row="0"
+                            Grid.ColumnSpan="1"
+                            Style="{StaticResource PositionDisplay}"
+                            Visibility="{Binding Path=ShowSet3, Converter={StaticResource BoolToVisConverter}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <TextBlock Style="{StaticResource PositionTextBlock}" Text="3 END"/>
+                    <TextBox x:Name="KF3endX" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[2].PositionEnd.PosX, Mode=TwoWay}"/>
+                    <TextBox x:Name="KF3endY" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[2].PositionEnd.PosY, Mode=TwoWay}"/>
+                    <TextBox x:Name="KF3endZ" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[2].PositionEnd.PosZ, Mode=TwoWay}"/>
+                    </StackPanel>
+                
+                <!--Keyframe 4 -->               
+                    <!--Keyframe 4 START-->
+                <StackPanel Grid.Column="0" Grid.Row="0"
+                            Grid.ColumnSpan="1"
+                            Style="{StaticResource PositionDisplay}"
+                            Visibility="{Binding Path=ShowSet4, Converter={StaticResource BoolToVisConverter}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <TextBlock Style="{StaticResource PositionTextBlock}" Text="4 START"/>
+                    <TextBox x:Name="KF4startX" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[3].PositionStart.PosX, Mode=TwoWay}"/>
+                    <TextBox x:Name="KF4startY" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[3].PositionStart.PosY, Mode=TwoWay}"/>
+                    <TextBox x:Name="KF4startZ" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[3].PositionStart.PosZ, Mode=TwoWay}"/>
+                    </StackPanel>
+
+                    <!--Keyframe 4 END-->
+                <StackPanel Grid.Column="1" Grid.Row="0"
+                            Grid.ColumnSpan="1"
+                            Style="{StaticResource PositionDisplay}"
+                            Visibility="{Binding Path=ShowSet4, Converter={StaticResource BoolToVisConverter}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <TextBlock Style="{StaticResource PositionTextBlock}" Text="4 END"/>
+                    <TextBox x:Name="KF4endX" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[3].PositionEnd.PosX, Mode=TwoWay}"/>
+                    <TextBox x:Name="KF4endY" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[3].PositionEnd.PosY, Mode=TwoWay}"/>
+                    <TextBox x:Name="KF4endZ" Style="{StaticResource PositionText}" Text="{Binding Path=ActivePlace.PositionList[3].PositionEnd.PosZ, Mode=TwoWay}"/>
+                    </StackPanel>
+
+            </Grid> <!--Active Place, positions END-->
+
+        </Grid>  <!-- Active Place END-->
+
+        <!-- CRUD-->
+        <StackPanel Grid.Row="2" Grid.Column="2"
+                    Orientation="Horizontal" 
+                    MaxHeight="40" 
+                    VerticalAlignment="Top" 
+                    Margin="0 5 0 0">
+            <!-- SAVE / NEW / DELETE -->
+            <Button x:Name="btnUpdate" Margin="5 0 5 5" Padding="5" Click="btnSaveList_Click" Content="SAVE"/>
+            <Button x:Name="btnNew" Margin="5 0 5 5" Padding="5" Content="NEW" Click="btnNew_Click"/>
+            <Button x:Name="btnDelete" Margin="5 0 5 5" Padding="5" Content="DELETE" Visibility="Hidden"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="2" 
+                    Orientation="Horizontal" 
+                    MaxHeight="40" 
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Margin="0 5 0 0">
+            <!-- PREV / NEXT -->
+            <Button x:Name="btnPrev" Margin="5 0 5 5" Padding="5" Content="prev" Visibility="Hidden"/>
+            <Button x:Name="btnNext" Margin="5 0 5 5" Padding="5" Content="next" Visibility="Hidden"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="3" VerticalAlignment="Bottom">
+        <!-- Add new position set -->
+        <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnImportData"
+                    Margin="5 5 5 0" 
+                    Padding="5" 
+                    Content="Import Data"
+                    Click="btnImportData_Click"/>
+                <Button x:Name="btnAddPositionSet" 
+                    Margin="5 5 5 0" 
+                    Padding="5" 
+                    Content="Add Position Set"
+                    Click="btnAddPositionSet_Click"/>                
+            </StackPanel>
+        </StackPanel>
+
+        <!--List of places-->
+        <ListBox x:Name="ListOfPlaces" 
+                 Grid.Row="2" Grid.Column="1"
+                 Grid.RowSpan="2" Grid.ColumnSpan="1" 
+                 ItemsSource="{Binding Path=ListOfPlaces, UpdateSourceTrigger=PropertyChanged}"
+                 DisplayMemberPath="DisplayEntry"
+                 SelectedItem="{Binding ActivePlace, Mode=TwoWay}"
+                 IsSynchronizedWithCurrentItem="True"
+                 />
+
+    </Grid> <!--MainGrid END-->
+</Window>
