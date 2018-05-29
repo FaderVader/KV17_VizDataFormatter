@@ -1,0 +1,16 @@
+C:\GIT_REPOS\KV17_VizDataFormatter\DataFormatter\bin\Debug\DataFormatter.exe.config
+C:\GIT_REPOS\KV17_VizDataFormatter\DataFormatter\bin\Debug\DataFormatter.exe
+C:\GIT_REPOS\KV17_VizDataFormatter\DataFormatter\bin\Debug\DataFormatter.pdb
+C:\GIT_REPOS\KV17_VizDataFormatter\DataFormatter\obj\Debug\DataFormatter.csprojResolveAssemblyReference.cache
+C:\GIT_REPOS\KV17_VizDataFormatter\DataFormatter\obj\Debug\Views\MainWindow.g.cs
+C:\GIT_REPOS\KV17_VizDataFormatter\DataFormatter\obj\Debug\App.g.cs
+C:\GIT_REPOS\KV17_VizDataFormatter\DataFormatter\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\GIT_REPOS\KV17_VizDataFormatter\DataFormatter\obj\Debug\DataFormatter_MarkupCompile.cache
+C:\GIT_REPOS\KV17_VizDataFormatter\DataFormatter\obj\Debug\DataFormatter_MarkupCompile.lref
+C:\GIT_REPOS\KV17_VizDataFormatter\DataFormatter\obj\Debug\Views\MainWindow.baml
+C:\GIT_REPOS\KV17_VizDataFormatter\DataFormatter\obj\Debug\DataFormatter.g.resources
+C:\GIT_REPOS\KV17_VizDataFormatter\DataFormatter\obj\Debug\DataFormatter.Properties.Resources.resources
+C:\GIT_REPOS\KV17_VizDataFormatter\DataFormatter\obj\Debug\DataFormatter.csproj.GenerateResource.Cache
+C:\GIT_REPOS\KV17_VizDataFormatter\DataFormatter\obj\Debug\DataFormatter.csproj.CoreCompileInputs.cache
+C:\GIT_REPOS\KV17_VizDataFormatter\DataFormatter\obj\Debug\DataFormatter.exe
+C:\GIT_REPOS\KV17_VizDataFormatter\DataFormatter\obj\Debug\DataFormatter.pdb

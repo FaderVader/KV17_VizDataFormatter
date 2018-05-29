@@ -12,7 +12,7 @@ namespace DataFormatter.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.3.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,7 +25,7 @@ namespace DataFormatter.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("F:\\GoogleDrive\\VS_PROJECTS\\WORK\\DataFormatter\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\GIT_REPOS\\KV17_VizDataFormatter\\")]
         public string Path {
             get {
                 return ((string)(this["Path"]));
@@ -65,6 +65,15 @@ namespace DataFormatter.Properties {
         public string ImportFileName {
             get {
                 return ((string)(this["ImportFileName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("MapDataArray")]
+        public string ArrayName {
+            get {
+                return ((string)(this["ArrayName"]));
             }
         }
     }

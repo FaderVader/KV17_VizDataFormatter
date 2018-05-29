@@ -43,6 +43,7 @@ namespace DataFormatter.Persist
             ObservableCollection<PlaceData> listOfData = new ObservableCollection<PlaceData>();
             PositionSet positionSet;
             string process;
+            int startIndex;
 
             try
             {
@@ -54,7 +55,16 @@ namespace DataFormatter.Persist
                 {
                     PlaceData place = new PlaceData();
                     process = line;
-                    process = process.Substring(16);
+                    startIndex = line.IndexOf("(") ;
+
+                    if (startIndex > 0)
+                    {
+                        process = process.Substring(startIndex + 2);
+                    }
+                    else
+                    {
+                        process = process.Substring(1);
+                    } 
 
                     // check if line contain data formatted as expected
                     int indexPosition = process.IndexOf("\'");

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="Path" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">F:\GoogleDrive\VS_PROJECTS\WORK\DataFormatter\</Value>
+      <Value Profile="(Default)">C:\GIT_REPOS\KV17_VizDataFormatter\</Value>
     </Setting>
     <Setting Name="DataFileName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">PositionData.txt</Value>
@@ -16,6 +16,9 @@
     </Setting>
     <Setting Name="ImportFileName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">RawData.txt</Value>
+    </Setting>
+    <Setting Name="ArrayName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">MapDataArray</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -14,6 +14,7 @@ namespace DataFormatter.Persist
     {
         string pathData = Properties.Settings.Default.Path + Properties.Settings.Default.DataFileName; //@"C:\GoogleDrive\VS_PROJECTS\WORK\DataFormatter\OutData.txt" ; // @"C:\TEMP\DemoData.txt" @"F:\GoogleDrive\VS_PROJECTS\WORK\DataFormatter\DemoData.txt" //TODO: set path via settings
         string pathExportToViz = Properties.Settings.Default.Path + Properties.Settings.Default.ExportFileName; //@"C:\GoogleDrive\VS_PROJECTS\WORK\DataFormatter\Export.txt";
+        string arrayName = Properties.Settings.Default.ArrayName;
 
         public void SaveData(ObservableCollection<PlaceData> listOfPlaces)
         {
@@ -51,7 +52,7 @@ namespace DataFormatter.Persist
 
             foreach (PlaceData place in listOfPlaces)
             {
-                stringBuilder.Append("DataArray.Push(\"");   // Append("\"DataArray.Push(\"");
+                stringBuilder.Append(arrayName + ".Push(\"");   // Append("\"DataArray.Push(\"");
                
                 stringBuilder.Append(place.PlaceId);
                 stringBuilder.Append("|");
